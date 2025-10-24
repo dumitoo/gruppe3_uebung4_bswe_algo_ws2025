@@ -30,7 +30,7 @@ public class RouteImporter implements Importable {
                 double totalPrice = Double.parseDouble(splittedLine[3]);
                 int stopovers = Integer.parseInt(splittedLine[4]);
 
-                routes.add(new Route(id, flights, totalDuration, totalPrice, stopovers));
+                //routes.add(new Route(id, flights, totalDuration, totalPrice, stopovers)); TODO: map id to flight
             } catch (IllegalArgumentException | NullPointerException e) {
                 log.error("Fehler beim Importieren der Route: " + e.getLocalizedMessage());
             }

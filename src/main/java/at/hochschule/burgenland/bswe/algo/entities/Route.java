@@ -12,7 +12,7 @@ import java.util.List;
 @ToString
 public class Route {
   private int id;
-  private List<Integer> flights;
+  private List<Flight> flights;
   private int totalDuration;
   private double totalPrice;
   private int stopovers;
