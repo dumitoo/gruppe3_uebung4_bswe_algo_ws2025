@@ -1,0 +1,11 @@
+id,iata,city,country,latitude,longitude
+1,FRA,Frankfurt,Deutschland,50.0379,8.5622
+2,MUC,München,Deutschland,48.3538,11.7861
+3,BER,Berlin,Deutschland,52.3667,13.5033
+4,CDG,Paris,Frankreich,49.0097,2.5479
+5,ORY,Paris,Frankreich,48.7233,2.3794
+6,LHR,London,Vereinigtes Königreich,51.4700,-0.4543
+7,LGW,London,Vereinigtes Königreich,51.1481,-0.1903
+8,MAN,Manchester,Vereinigtes Königreich,53.3650,-2.2720
+9,AMS,Amsterdam,Niederlande,52.3105,4.7683
+10,BRU,Brüssel,Belgien,50.9014,4.4844
