@@ -10,7 +10,6 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class CSVUtils {
     private static final Logger log = LogManager.getLogger(CSVUtils.class);
 
@@ -26,6 +25,8 @@ public class CSVUtils {
         } catch (IOException e) {
             log.error("Fehler beim Lesen der Datei: " + e.getLocalizedMessage());
         }
+
+        lines.remove(0);
 
         return lines;
     }
