@@ -10,12 +10,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class RouteImporter implements Importable {
+public class RouteImporter implements Importable<Route> {
     private static final Logger log = LogManager.getLogger(RouteImporter.class);
 
     @Override
-    public List<Object> importData() {
-        List<Object> routes = new ArrayList<>();
+    public List<Route> importData() {
+        List<Route> routes = new ArrayList<>();
 
         CSVUtils.readCSV(Paths.get("src", "main", "resources", "routes.csv")).forEach(line -> {
             try {

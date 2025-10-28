@@ -9,12 +9,12 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AirportImporter implements Importable {
+public class AirportImporter implements Importable<Airport> {
   private static final Logger log = LogManager.getLogger(AirportImporter.class);
 
   @Override
-  public List<Object> importData() {
-    List<Object> airports = new ArrayList<>();
+  public List<Airport> importData() {
+    List<Airport> airports = new ArrayList<>();
 
     CSVUtils.readCSV(Paths.get("src", "main", "resources", "routes.csv")).forEach(line -> {
       try {

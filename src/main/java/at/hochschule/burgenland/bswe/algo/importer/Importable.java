@@ -2,6 +2,6 @@ package at.hochschule.burgenland.bswe.algo.importer;
 
 import java.util.List;
 
-public interface Importable {
-    List<Object> importData();
+public interface Importable<T> {
+    List<T> importData();
 }

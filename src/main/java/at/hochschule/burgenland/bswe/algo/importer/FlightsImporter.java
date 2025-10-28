@@ -12,12 +12,12 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.regex.PatternSyntaxException;
 
-public class FlightsImporter implements Importable{
-    List<Object> flights = new ArrayList<>();
+public class FlightsImporter implements Importable<Flight>{
+    List<Flight> flights = new ArrayList<>();
 
 
     @Override
-    public List<Object> importData() {
+    public List<Flight> importData() {
         List<String> csvImport = CSVUtils.readCSV(Path.of("src", "main", "resources", "flights.csv"));
 
         for (String line : csvImport) {
