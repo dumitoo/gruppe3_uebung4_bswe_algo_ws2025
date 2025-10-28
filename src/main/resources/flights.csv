@@ -9,4 +9,3 @@ id,origin,destination,airline,flightNumber,duration,price,departureTime
 8,CDG,MUC,Air France,AF1122,90,139,11:20
 9,ORY,LHR,Vueling,VY8708,75,109,16:45
 10,MAN,AMS,KLM,KL1070,75,119,06:55
-S
