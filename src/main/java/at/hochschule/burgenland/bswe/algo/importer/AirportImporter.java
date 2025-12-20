@@ -16,7 +16,7 @@ public class AirportImporter implements Importable<Airport> {
   public List<Airport> importData() {
     List<Airport> airports = new ArrayList<>();
 
-    CSVUtils.readCSV(Paths.get("src", "main", "resources", "routes.csv")).forEach(line -> {
+    CSVUtils.readCSV(Paths.get("src", "main", "resources", "airports.csv")).forEach(line -> {
       try {
         String[] split = line.split(",");
         int count = split.length;
