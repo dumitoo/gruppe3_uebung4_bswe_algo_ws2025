@@ -16,4 +16,11 @@ public class Route {
   private int totalDuration;
   private double totalPrice;
   private int stopovers;
+
+  public Route(List<Flight> flights, int totalDuration, double totalPrice, int stopovers) {
+    this.flights = flights;
+    this.totalDuration = totalDuration;
+    this.totalPrice = totalPrice;
+    this.stopovers = stopovers;
+  }
 }
