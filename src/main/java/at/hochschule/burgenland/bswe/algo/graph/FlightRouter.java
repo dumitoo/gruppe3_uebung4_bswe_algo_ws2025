@@ -23,7 +23,7 @@ public class FlightRouter {
             List<Flight> currentPath = currentState.getPath();
             int currentStopovers = currentState.getStopovers();
 
-            if (currentAirport.equals(destination)) {
+            if (currentAirport.equals(destination) && currentStopovers >= 0) {
                 Flight firstFlight = currentPath.get(0);
                 Flight lastFlight = currentPath.get(currentPath.size() - 1);
 

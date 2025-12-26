@@ -4,9 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,5 +31,14 @@ public class CSVUtils {
         lines.remove(0);
 
         return lines;
+    }
+
+    public static void writeCSV(Path path, String line) {
+        try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.APPEND)) {
+            writer.newLine();
+            writer.write(line);
+        } catch (IOException e) {
+            log.error("Fehler beim Schreiben der Datei: " + e.getLocalizedMessage());
+        }
     }
 }
