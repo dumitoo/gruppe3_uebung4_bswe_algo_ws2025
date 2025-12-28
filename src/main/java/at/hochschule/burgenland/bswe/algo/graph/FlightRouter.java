@@ -45,11 +45,17 @@ public class FlightRouter {
             List<Flight> outgoingFlights = graph.getOrDefault(currentAirport, List.of());
 
             for (Flight flight : outgoingFlights) {
+                LocalTime departureTime = flight.getDepartureTime();
+                LocalTime arrivalTime = departureTime.plusMinutes(flight.getDuration());
+                if (arrivalTime.isBefore(departureTime)) {
+                    continue;
+                }
+
                 if (!currentPath.isEmpty()) {
                     Flight prevFlight = currentPath.get(currentPath.size() - 1);
                     LocalTime arrivalTimePrev = prevFlight.getDepartureTime().plusMinutes(prevFlight.getDuration());
 
-                    if (arrivalTimePrev.plusMinutes(20).isAfter(flight.getDepartureTime())) {
+                    if (arrivalTimePrev.plusMinutes(20).isAfter(departureTime)) {
                         continue;
                     }
                 }
@@ -67,6 +73,10 @@ public class FlightRouter {
 
                 queue.add(new State(flight.getDestination(), newPath, newCost, newStopovers));
             }
+        }
+
+        if (weightFunction instanceof DurationWeightFunction) {
+            routes.sort(Comparator.comparingInt(Route::getTotalDuration));
         }
 
         return routes;

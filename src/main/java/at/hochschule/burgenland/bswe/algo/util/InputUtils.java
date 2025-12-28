@@ -62,11 +62,13 @@ public class InputUtils {
     }
 
     public static int getValidMenuOption(List<String> options) {
-        int input = 0, i = 1;
+        int input = 0;
         boolean inputIsValid = false;
 
         do {
             try {
+                int i = 1;
+
                 System.out.println("Choose an option:");
                 for (String option : options) {
                     System.out.println(i++ + ") " + option);

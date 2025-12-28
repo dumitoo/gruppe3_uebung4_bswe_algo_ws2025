@@ -2,6 +2,7 @@ package at.hochschule.burgenland.bswe.algo.menu;
 
 import at.hochschule.burgenland.bswe.algo.entities.Flight;
 import at.hochschule.burgenland.bswe.algo.entities.Route;
+import at.hochschule.burgenland.bswe.algo.graph.DurationWeightFunction;
 import at.hochschule.burgenland.bswe.algo.graph.FlightRouter;
 import at.hochschule.burgenland.bswe.algo.graph.WeightFunction;
 import at.hochschule.burgenland.bswe.algo.importer.RouteImporter;
@@ -20,8 +21,8 @@ public class RouteMenu {
 
         WeightFunction weightFunction = switch (option) {
             case 1 -> Flight::getPrice;
-            case 2 -> Flight::getDuration;
-            case 3 -> flight -> 1.0;
+            case 2 -> new DurationWeightFunction();
+            case 3 -> flight -> 1;
             default -> throw new IllegalStateException("Unexpected value: " + option);
         };
 

@@ -9,7 +9,7 @@ import java.util.List;
 
 public class OutputUtils {
     public static void printAirport(Airport airport) {
-        System.out.println(airport.getCity() + "(" + airport.getIata() + "), " + airport.getCountry() + " (" + airport.getLatitude() + ", " + airport.getLongitude() + ")");
+        System.out.println(airport.getCity() + " (" + airport.getIata() + "), " + airport.getCountry() + " (" + airport.getLatitude() + ", " + airport.getLongitude() + ")");
     }
 
     public static void printFlight(Flight flight) {
