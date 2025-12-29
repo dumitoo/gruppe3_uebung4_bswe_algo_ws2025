@@ -20,7 +20,7 @@ public class InputUtils {
      * @param message message shown before reading input
      * @return valid user input string
      */
-    public String readValidString(String message) {
+    public static String readValidString(String message) {
         while (true) {
             System.out.println(message);
             String input = scanner.nextLine().trim();
