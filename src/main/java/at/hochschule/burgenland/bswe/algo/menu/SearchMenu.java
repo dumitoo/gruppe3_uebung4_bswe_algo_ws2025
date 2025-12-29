@@ -10,7 +10,13 @@ import at.hochschule.burgenland.bswe.algo.util.OutputUtils;
 
 import java.util.List;
 
+/**
+ * Class to run menu for searching flights.
+ */
 public class SearchMenu {
+  /**
+   * This method to start menu.
+   */
   public static void runMenu() {
     List<Airport> airports = new AirportImporter().importData();
     List<Flight> flights = new FlightsImporter().importData();
@@ -43,6 +49,11 @@ public class SearchMenu {
 
   }
 
+  /**
+   * This method prints a list of given flight results.
+   *
+   * @param results list of flights returned by a search
+   */
   private static void printSearchResults(List<Flight> results) {
     if (results.isEmpty()) {
       System.out.println("No flights found.");
@@ -57,6 +68,12 @@ public class SearchMenu {
     }
   }
 
+  /**
+   * This method to perform searching by origin.
+   *
+   * @param airports list of loaded airports
+   * @param searchFlight index search structure for flights
+   */
   private static void searchOrigin(List<Airport> airports, SearchFlight searchFlight) {
     String origin = InputUtils.getValidIATACode("Origin");
 
@@ -74,6 +91,12 @@ public class SearchMenu {
     printSearchResults(results);
   }
 
+  /**
+   * This method to perform searching by destination.
+   *
+   * @param airports list of loaded airports
+   * @param searchFlight index search structure for flights
+   */
   private static void searchDestination(List<Airport> airports, SearchFlight searchFlight){
     String destination = InputUtils.getValidIATACode("Destination");
 
@@ -91,6 +114,11 @@ public class SearchMenu {
     printSearchResults(results);
   }
 
+  /**
+   * This method to perform searching by airport.
+   *
+   * @param searchFlight index search structure for flights
+   */
   public static void searchAirline(SearchFlight searchFlight) {
     String airline = InputUtils.readValidString("Airline:");
 
@@ -98,6 +126,11 @@ public class SearchMenu {
     printSearchResults(results);
   }
 
+  /**
+   * This method to perform searching by flightNumber
+   *
+   * @param searchFlight index search structure for flights
+   */
   public static void searchFlightNumber(SearchFlight searchFlight) {
     String flightNumber = InputUtils.readValidString("Flight Number: ");
 
