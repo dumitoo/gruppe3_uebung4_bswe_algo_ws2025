@@ -66,7 +66,7 @@ public class SearchFlight {
    * @param flight flight to inde by airline
    */
   private void indexAirline(Flight flight) {
-    String airline = flight.getAirline().trim();
+    String airline = flight.getAirline().trim().toLowerCase();
 
     if (!byAirline.containsKey(airline)) {
       byAirline.put(airline, new ArrayList<>());
@@ -116,7 +116,7 @@ public class SearchFlight {
    * @return list of matching flights
    */
   public List<Flight> searchByAirline(String airline) {
-    return byAirline.getOrDefault(airline.trim(), List.of());
+    return byAirline.getOrDefault(airline.trim().toLowerCase(), List.of());
   }
 
   /**
