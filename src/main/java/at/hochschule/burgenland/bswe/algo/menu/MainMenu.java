@@ -11,6 +11,7 @@ public class MainMenu {
             int option = InputUtils.getValidMenuOption(List.of("Route Calculation", "Sorting", "Searching", "Exit"));
             switch (option) {
                 case 1 -> RouteMenu.runMenu();
+                case 2 -> SortMenu.runMenu();
                 case 3 -> SearchMenu.runMenu();
                 case 4 -> System.exit(0);
             }
