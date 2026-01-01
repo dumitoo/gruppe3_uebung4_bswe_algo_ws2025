@@ -6,9 +6,9 @@ import java.util.Comparator;
 
 public class CombinedComparator implements Comparator<Route>{
 
-    private final Comparator<Route> durationComparator = new DurationAscendingComparator();
-    private final Comparator<Route> stopoversComparator = new StopoversAscendingComparator();
-    private final Comparator<Route> priceComparator = new PriceAscendingComparator();
+    private final Comparator<Route> durationComparator = new DurationComparator();
+    private final Comparator<Route> stopoversComparator = new StopoversComparator();
+    private final Comparator<Route> priceComparator = new PriceComparator();
 
 
     @Override

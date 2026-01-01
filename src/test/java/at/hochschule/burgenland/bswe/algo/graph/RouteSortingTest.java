@@ -1,9 +1,9 @@
 package at.hochschule.burgenland.bswe.algo.graph;
 
 import at.hochschule.burgenland.bswe.algo.comparators.CombinedComparator;
-import at.hochschule.burgenland.bswe.algo.comparators.DurationAscendingComparator;
-import at.hochschule.burgenland.bswe.algo.comparators.PriceAscendingComparator;
-import at.hochschule.burgenland.bswe.algo.comparators.StopoversAscendingComparator;
+import at.hochschule.burgenland.bswe.algo.comparators.DurationComparator;
+import at.hochschule.burgenland.bswe.algo.comparators.PriceComparator;
+import at.hochschule.burgenland.bswe.algo.comparators.StopoversComparator;
 import at.hochschule.burgenland.bswe.algo.entities.Flight;
 import at.hochschule.burgenland.bswe.algo.entities.Route;
 import at.hochschule.burgenland.bswe.algo.sort.StableMergeSort;
@@ -54,7 +54,7 @@ public class RouteSortingTest {
 
     @Test
     void mergeSortByPrice() {
-        Comparator<Route> comparator = new PriceAscendingComparator();
+        Comparator<Route> comparator = new PriceComparator();
 
         List<Route> sortedList = mergeSort.sort(testRoutes, comparator);
 
@@ -67,7 +67,7 @@ public class RouteSortingTest {
 
     @Test
     void quickSortByPrice() {
-        Comparator<Route> comparator = new PriceAscendingComparator();
+        Comparator<Route> comparator = new PriceComparator();
 
         List<Route> sortedList = quickSort.sort(testRoutes, comparator);
 
@@ -80,7 +80,7 @@ public class RouteSortingTest {
 
     @Test
     void mergeSortByDuration() {
-        Comparator<Route> comparator = new DurationAscendingComparator();
+        Comparator<Route> comparator = new DurationComparator();
 
         List<Route> sortedList = mergeSort.sort(testRoutes, comparator);
 
@@ -93,7 +93,7 @@ public class RouteSortingTest {
 
     @Test
     void quickSortByDuration() {
-        Comparator<Route> comparator = new DurationAscendingComparator();
+        Comparator<Route> comparator = new DurationComparator();
 
         List<Route> sortedList = quickSort.sort(testRoutes, comparator);
 
@@ -106,7 +106,7 @@ public class RouteSortingTest {
 
     @Test
     void mergeSortByStopovers() {
-        Comparator<Route> comparator = new StopoversAscendingComparator();
+        Comparator<Route> comparator = new StopoversComparator();
 
         List<Route> sortedList = mergeSort.sort(testRoutes, comparator);
 
@@ -149,7 +149,7 @@ public class RouteSortingTest {
 
     @Test
     void mergeSortIsStable() {
-        Comparator<Route> comparator = new PriceAscendingComparator();
+        Comparator<Route> comparator = new PriceComparator();
         List<Route> testRoutes = new ArrayList<>();
         testRoutes.add(createRoute(1, "A", "A1", 100.0, 100, 0));
         testRoutes.add(createRoute(2, "B", "B1", 200.0, 100, 0));

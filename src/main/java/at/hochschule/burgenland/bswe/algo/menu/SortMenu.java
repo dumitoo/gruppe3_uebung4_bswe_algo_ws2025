@@ -1,9 +1,9 @@
 package at.hochschule.burgenland.bswe.algo.menu;
 
 import at.hochschule.burgenland.bswe.algo.comparators.CombinedComparator;
-import at.hochschule.burgenland.bswe.algo.comparators.DurationAscendingComparator;
-import at.hochschule.burgenland.bswe.algo.comparators.PriceAscendingComparator;
-import at.hochschule.burgenland.bswe.algo.comparators.StopoversAscendingComparator;
+import at.hochschule.burgenland.bswe.algo.comparators.DurationComparator;
+import at.hochschule.burgenland.bswe.algo.comparators.PriceComparator;
+import at.hochschule.burgenland.bswe.algo.comparators.StopoversComparator;
 import at.hochschule.burgenland.bswe.algo.entities.Route;
 import at.hochschule.burgenland.bswe.algo.importer.RouteImporter;
 import at.hochschule.burgenland.bswe.algo.sort.StableMergeSort;
@@ -74,9 +74,9 @@ public class SortMenu {
             ));
 
             comparator = switch (choice) {
-                case 1 -> new PriceAscendingComparator();
-                case 2 -> new DurationAscendingComparator();
-                case 3 -> new StopoversAscendingComparator();
+                case 1 -> new PriceComparator();
+                case 2 -> new DurationComparator();
+                case 3 -> new StopoversComparator();
                 case 4 -> new CombinedComparator();
                 default -> null;
             };

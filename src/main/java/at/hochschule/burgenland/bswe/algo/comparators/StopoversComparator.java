@@ -4,7 +4,7 @@ import at.hochschule.burgenland.bswe.algo.entities.Route;
 
 import java.util.Comparator;
 
-public class StopoversAscendingComparator implements Comparator<Route> {
+public class StopoversComparator implements Comparator<Route> {
 
     @Override
     public int compare(Route route1, Route route2) {
