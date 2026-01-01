@@ -48,10 +48,11 @@ public class SortMenu {
     }
 
     private static List<Route> sortRoutes(List<Route> routes, int algoChoice, Comparator<Route> comparator) {
-        /*if (algoChoice == 1) {
+        if (algoChoice == 1) {
             System.out.println("\nUsing stable merge sort...");
-            //TODO implement merge sort
-        } else {
+            StableMergeSort sorter = new StableMergeSort();
+            return sorter.sort(routes, comparator);
+        }/* else {
             System.out.println("\nUsing unstable quick sort...");
             //TODO implement quick sort
         }*/
