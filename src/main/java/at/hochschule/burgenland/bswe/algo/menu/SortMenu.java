@@ -7,6 +7,7 @@ import at.hochschule.burgenland.bswe.algo.comparators.StopoversAscendingComparat
 import at.hochschule.burgenland.bswe.algo.entities.Route;
 import at.hochschule.burgenland.bswe.algo.importer.RouteImporter;
 import at.hochschule.burgenland.bswe.algo.sort.StableMergeSort;
+import at.hochschule.burgenland.bswe.algo.sort.UnstableQuickSort;
 import at.hochschule.burgenland.bswe.algo.util.InputUtils;
 import at.hochschule.burgenland.bswe.algo.util.OutputUtils;
 
@@ -50,13 +51,13 @@ public class SortMenu {
     private static List<Route> sortRoutes(List<Route> routes, int algoChoice, Comparator<Route> comparator) {
         if (algoChoice == 1) {
             System.out.println("\nUsing stable merge sort...");
-            StableMergeSort sorter = new StableMergeSort();
-            return sorter.sort(routes, comparator);
-        }/* else {
+            StableMergeSort mergeSort = new StableMergeSort();
+            return mergeSort.sort(routes, comparator);
+        } else {
             System.out.println("\nUsing unstable quick sort...");
-            //TODO implement quick sort
-        }*/
-        return null;
+            UnstableQuickSort quickSort = new UnstableQuickSort();
+            return quickSort.sort(routes, comparator);
+        }
     }
 
     private static Comparator<Route> getComparatorFromUserInput() {
