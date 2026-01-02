@@ -17,6 +17,12 @@ public class RouteMenu {
     public static void runMenu() {
         System.out.println("-------------------------ROUTE MENU-------------------------");
         String origin = InputUtils.getValidIATACode("Origin"), destination = InputUtils.getValidIATACode("Destination");
+
+        if (origin.equals(destination)) {
+            System.out.println("Origin is equal to destination!");
+            return;
+        }
+
         int option = InputUtils.getValidMenuOption(List.of("Cheapest Route", "Slowest Route", "Least Stopovers"));
 
         WeightFunction weightFunction = switch (option) {
@@ -28,7 +34,7 @@ public class RouteMenu {
 
         List<Route> routes = FlightRouter.findAllRoutes(origin, destination, weightFunction);
 
-        if(routes.isEmpty()) {
+        if (routes.isEmpty()) {
             System.out.println("No possible route found!");
             return;
         }
