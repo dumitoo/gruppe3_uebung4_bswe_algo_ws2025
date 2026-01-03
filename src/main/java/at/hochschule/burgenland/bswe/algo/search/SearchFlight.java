@@ -3,20 +3,21 @@ package at.hochschule.burgenland.bswe.algo.search;
 import at.hochschule.burgenland.bswe.algo.entities.Flight;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
 /**
- * This class has implemented index search for flights
+ * This class has implemented index and binary search for flights
  */
 public class SearchFlight {
   private final HashMap<String, List<Flight>> byOrigin = new HashMap<>();
   private final HashMap<String, List<Flight>> byDestination = new HashMap<>();
   private final HashMap<String, List<Flight>> byAirline = new HashMap<>();
-  private final HashMap<String, Flight> byFlightNumber = new HashMap<>();
+  private final List<Flight> byFlightNumber;
 
   /**
-   * This method builds all search indexes for the given flights.
+   * Builds search indexes and prepares a sorted list for binary search by flight number.
    *
    * @param flights list of flights to index
    */
@@ -25,8 +26,9 @@ public class SearchFlight {
       indexOrigin(flight);
       indexDestination(flight);
       indexAirline(flight);
-      indexFlightNumber(flight);
     }
+    this.byFlightNumber = new ArrayList<>(flights);
+    this.byFlightNumber.sort(Comparator.comparing(flight -> flight.getFlightNumber().trim().toUpperCase()));
   }
 
   /**
@@ -63,7 +65,7 @@ public class SearchFlight {
   /**
    * This method indexes flight by airline.
    *
-   * @param flight flight to inde by airline
+   * @param flight flight to index by airline
    */
   private void indexAirline(Flight flight) {
     String airline = flight.getAirline().trim().toLowerCase();
@@ -74,19 +76,6 @@ public class SearchFlight {
 
     byAirline.get(airline).add(flight);
 
-  }
-
-  /**
-   * This method indexes flight by flightNumber.
-   *
-   * @param flight flight to inde by flightNumber
-   */
-  private void indexFlightNumber(Flight flight) {
-    String flightNumber = flight.getFlightNumber().trim().toUpperCase();
-
-    if (!flightNumber.isEmpty()) {
-      byFlightNumber.put(flightNumber, flight);
-    }
   }
 
   /**
@@ -120,13 +109,33 @@ public class SearchFlight {
   }
 
   /**
-   * This method returns flight with the given flightNumber.
+   * This method returns flight with the given flightNumber using binary search.
    *
    * @param flightNumber flight number
    * @return matching flight
    */
   public Flight searchByFlightNumber(String flightNumber) {
-    return byFlightNumber.get(flightNumber.trim().toUpperCase());
-  }
+    String searchedFlight = flightNumber.trim().toUpperCase();
 
+    if (searchedFlight.isEmpty()) {
+      return null;
+    }
+
+    int left = 0;
+    int right = byFlightNumber.size() - 1;
+
+    while (left <= right) {
+      int middle = left + (right - left) / 2;
+
+      Flight middleFlight = byFlightNumber.get(middle);
+      String middleFlightNumber = middleFlight.getFlightNumber().trim().toUpperCase();
+
+      int compared = middleFlightNumber.compareTo(searchedFlight);
+      if (compared == 0) return middleFlight;
+      if (compared < 0) left = middle + 1;
+      else right = middle - 1;
+    }
+
+    return null;
+  }
 }
